@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.css'
 
 export default function Home() {
   // Contract Address & ABI
-  const contractAddress = "0xDBa03676a2fBb6711CB652beF5B7416A53c1421D";
+  const contractAddress = "0x70750D85620e21F6AEbECe49Abe80B4444b80FaC";
   const contractABI = abi.abi;
 
   // Component state
@@ -166,38 +166,32 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Buy Albert a Coffee!</title>
+        <title>Buy Ted a Coffee!</title>
         <meta name="description" content="Tipping site" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Buy Albert a Coffee!
-        </h1>
-        
+        <h1 className={styles.title}>Buy Ted a Coffee!</h1>
+
         {currentAccount ? (
           <div>
             <form>
               <div class="formgroup">
-                <label>
-                  Name
-                </label>
-                <br/>
-                
+                <label>Name</label>
+                <br />
+
                 <input
                   id="name"
                   type="text"
                   placeholder="anon"
                   onChange={onNameChange}
-                  />
+                />
               </div>
-              <br/>
+              <br />
               <div class="formgroup">
-                <label>
-                  Send Albert a message
-                </label>
-                <br/>
+                <label>Send Ted a message</label>
+                <br />
 
                 <textarea
                   rows={3}
@@ -205,14 +199,10 @@ export default function Home() {
                   id="message"
                   onChange={onMessageChange}
                   required
-                >
-                </textarea>
+                ></textarea>
               </div>
               <div>
-                <button
-                  type="button"
-                  onClick={buyCoffee}
-                >
+                <button type="button" onClick={buyCoffee}>
                   Send 1 Coffee for 0.001ETH
                 </button>
               </div>
@@ -223,16 +213,27 @@ export default function Home() {
         )}
       </main>
 
-      {currentAccount && (<h1>Memos received</h1>)}
+      {currentAccount && <h1>Memos received</h1>}
 
-      {currentAccount && (memos.map((memo, idx) => {
-        return (
-          <div key={idx} style={{border:"2px solid", "border-radius":"5px", padding: "5px", margin: "5px"}}>
-            <p style={{"font-weight":"bold"}}>"{memo.message}"</p>
-            <p>From: {memo.name} at {memo.timestamp.toString()}</p>
-          </div>
-        )
-      }))}
+      {currentAccount &&
+        memos.map((memo, idx) => {
+          return (
+            <div
+              key={idx}
+              style={{
+                border: "2px solid",
+                "border-radius": "5px",
+                padding: "5px",
+                margin: "5px",
+              }}
+            >
+              <p style={{ "font-weight": "bold" }}>"{memo.message}"</p>
+              <p>
+                From: {memo.name} at {memo.timestamp.toString()}
+              </p>
+            </div>
+          );
+        })}
 
       <footer className={styles.footer}>
         <a
@@ -240,9 +241,9 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Created by @thatguyintech for Alchemy's Road to Web3 lesson two!
+          Created by @mairura 💓 for Alchemy's Road to Web3 lesson two!
         </a>
       </footer>
     </div>
-  )
+  );
 }
